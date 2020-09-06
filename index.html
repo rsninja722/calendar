@@ -1,23 +1,88 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>calendar</title>
         <style>
             body {
                 margin: 0;
                 background-color: #212121;
                 color: #ddddff;
+                font-family: monospace;
             }
             .month {
                 display: inline-block;
                 padding: 4px;
             }
+            .header {
+                padding-bottom: 0;
+            }
+            .big {
+                font-size: 20px;
+            }
+            #cursor {
+                border: 1px solid #ddddff;
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                pointer-events: none;
+                display: none;
+            }
+            table {
+                border: 1px solid;
+                border-collapse: collapse;
+            }
+            td {
+                border: 1px solid;
+                padding-right: 18px;
+                padding-bottom: 18px;
+            }
+            button {
+                background-color: #353535;
+                border-color: #555555;
+                color: #4de1f5;
+                margin: 2px;
+                border-style: outset;
+                cursor: pointer;
+                padding: 0, 3px, 0, 3px;
+                border-width: 1px;
+            }
+            button:hover {
+                background-color: #454545;
+            }
+            button:active {
+                border-style: inset;
+                background-color: #252525;
+            }
+            textarea {
+                background-color: #181818;
+                border: 1px solid #101010;
+                border-top-color: #000000;
+                border-bottom-color: #333333;
+                border-radius: 2px;
+                color: #4de1f5;
+                margin: 2px;
+            }
+            .day:hover{background-color: none;}
         </style>
     </head>
     <body>
-        <button onclick="previous()">&ltcc;</button>
-        <button onclick="next()">&gtcc;</button>
+        <div style="display: inline-block;">
+            <button class="big" onclick="previous()">&ltcc;</button>
+            <button class="big" onclick="next()">&gtcc;</button>
+        </div>
+        <div style="display: inline-block;">
+            <button class="big" onclick="save()">💾</button>
+            <button class="big" onclick="exportSave()">⤓</button>
+            <button class="big" onclick="importSave()">⤒</button>
+        </div>
+        <div style="display: inline-block;">
+            <button class="big" onclick="text()">text</button>
+        </div>
+        <div id="buttons" style="display: inline-block;"></div>
+        <div id="save"></div>
         <div id="calendar"></div>
+        <div id="cursor"></div>
         <script src="main.js"></script>
     </body>
 </html>
